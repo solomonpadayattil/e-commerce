@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navigation from './components/navigation/navigation.component';
-import Home from './components/products/product-list.component.jsx'
+import Home from './components/products/product-list/product-list.component.jsx'
 import Cart from './components/cart/cart.component';
 
 function App() {
