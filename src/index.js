@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { ProductsProvider } from './contexts/products.context';
 import "./index.scss";
 
-// import { Provider } from 'react-redux';
-// import store from './store';
+
 const rootElement = document.getElementById('root');
+console.log("store"+JSON.stringify(store))
 
 ReactDOM.createRoot(rootElement).render(
-  <BrowserRouter>
-    <ProductsProvider>
-      <App />    
-    </ProductsProvider>
-  </BrowserRouter>
+  <Provider store= {store}>
+    <BrowserRouter>
+      <ProductsProvider>
+          <App />    
+      </ProductsProvider>
+    </BrowserRouter>
+  </Provider>
 
 );
