@@ -13,7 +13,7 @@ const Shop = () => {
     const dispatch = useDispatch();
 
     const fetchProducts = async() => {
-        const response = await axios.get('https://fakestoreapi.com/products?limit=100')
+        const response = await axios.get('https://fakestoreapi.com/products?limit=100',{headers:{'Access-Control-Allow-Origin': 'https://fakestoreapi.com'}})
         .catch((err)=>{
             console.log("Err",err);
         })
