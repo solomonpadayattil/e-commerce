@@ -6,11 +6,14 @@ import {
   removeItemFromCart,
 } from '../../../store/cart/cart.action';
 
+import './checkout-item.styles.scss';
+
+
 import { selectCartItems } from '../../../store/cart/cart.selector';
 
 
 const CheckoutItem = ({ cartItem }) => {
-  const { title, description, price, quantity } = cartItem;
+  const { title, image, price, quantity } = cartItem;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -22,7 +25,9 @@ const CheckoutItem = ({ cartItem }) => {
 
   return (
     <div className='checkout-item-container'>
-    
+        <div className='image-container'>
+          <img src={image} alt={`${title}`} />
+        </div>
         <span className='name'>{title}</span>
         <span className='quantity'>
           <div className='arrow' onClick={removeItemHandler}>

@@ -2,12 +2,12 @@ import { useDispatch,useSelector } from 'react-redux';
 import { selectCartItems } from '../../../store/cart/cart.selector';
 import { addItemToCart } from '../../../store/cart/cart.action';
 
-import Button from '../../button/button.component';
+import Button , {BUTTON_TYPE_CLASSES} from '../../button/button.component';
 
 import './product-card.styles.scss';
 
 const ProductCard = ({ product }) => {
-  const { title, description, price } = product;
+  const { id,title, image, price,category } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -15,13 +15,19 @@ const ProductCard = ({ product }) => {
 
 
   return (
-    <div className='product-card-container'>
-        <span className='title'>{title}</span>
-        <span className='description'>{description}</span>
-        <Button buttonType='inverted'  onClick={addProductToCart}>
-            Add to cart
-        </Button>
-        <span className='price'>${price}</span>
+    <div className='product-card-container' key={id}>
+      <img src={image} alt={`${title}`} />
+      <span className='name'>{title}</span>
+      <span className='price'>${price}</span>
+      <div className='footer'>
+        <span className='category'>{category}</span>
+      </div>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.inverted}
+        onClick={addProductToCart}
+      >
+        Add to card
+      </Button>
     </div>
   );
 };
